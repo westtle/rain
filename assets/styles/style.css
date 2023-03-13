@@ -1,0 +1,113 @@
+:root {
+    --font-size-primary: 0.906rem; /* 14.5px */
+    --font-size-secondary: 0.688rem; /* 11px */
+
+    --foreground: rgba(255, 255, 255, 0.9);
+    --background: #040303;
+
+    --border-color: rgba(255, 255, 255, 0.85);
+    --border-shorthand: 0.063rem solid var(--border-color);
+
+    --seven: 0.438rem; /* 7px */
+    --twelve: 0.75rem; /* 12px */
+
+    --icon-background: url("../Images/volume-x.svg");
+    --icon-opacity: 0.6;
+}
+
+*, *::before, *::after {
+    color: var(--foreground);
+    background-color: var(--background);
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+	overflow: hidden;
+}
+
+#sound-icon {
+    background: none;
+    border: none;
+    height: 2.1875rem;
+    width: 2.1875rem;
+    padding: 0;
+    cursor: pointer;
+
+    position: relative;
+    top: 0.125rem;
+    left: 0.1875rem;
+}
+
+#sound-icon::before {
+    content: "";
+    background: var(--icon-background) no-repeat center;
+    background-size: 100%;
+    width: 1.3125rem;
+    height: 1.3125rem;
+    filter: invert(100%);
+    opacity: 0.8;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.__droplet {
+	border-left: 0.0625rem solid rgba(255, 255, 255, 0.5);
+	height: 1.25rem;
+	width: 0.0625rem;
+	animation: rain 2s infinite ease-in;
+
+	position: absolute;
+	top: -1.5625rem;
+}
+
+@keyframes rain {
+	from {
+		transform: translateY(-1.5625rem);
+	}
+
+	to {
+		transform: translateY(110vh);
+		opacity: 0;
+	}
+}
+
+/* Notice / Link */
+
+#notice {
+/*    margin-top: 0.656rem;*/
+    padding: 0 var(--seven);
+    font-size: var(--font-size-secondary);
+    text-align: center;
+    line-height: 1.1;
+    word-wrap: break-word;
+
+    position: absolute;
+    left: 50%;
+    bottom: var(--twelve);
+    transform: translateX(-50%);
+}
+
+/* Media Query */
+
+@media (hover: hover) {
+    #sound-icon::before {
+        opacity: var(--icon-opacity);
+    }
+
+    #sound-icon:hover::before {
+        opacity: 0.8;
+    }
+}
+
+/* Font Size */
+@media (max-width: 30rem) { /* 480px */
+    html {
+        font-size: calc(1rem - 10%);
+    }
+}
+/* -------- */
